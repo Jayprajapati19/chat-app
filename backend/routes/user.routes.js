@@ -31,5 +31,3 @@ router.get(
 );
 
 export default router;
-
-// 43

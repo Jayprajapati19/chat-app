@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-export const authUser = async (req, res) => {
+export const authUser = async (req, res, next) => {
   try {
     const token = req.cookies.token || req.headers.authorization.split(" ")[1];
 
@@ -14,6 +14,8 @@ export const authUser = async (req, res) => {
     next();
     // const user = await User.findById(req.user.id);
   } catch (error) {
-    res.status(401).send({ error: "please authenticate" });
+    console.log(error);
+
+    res.status(401).send({ error: "unauthorized user" });
   }
 };
