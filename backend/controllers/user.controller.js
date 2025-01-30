@@ -31,7 +31,7 @@ export const loginController = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await userModel.findOne({ email: email });
+    const user = await userModel.findOne({ email: email }).select("+password");
 
     if (!user) {
       return res.status(401).json({
@@ -54,3 +54,5 @@ export const loginController = async (req, res) => {
     res.status(400).send(error.message);
   }
 };
+
+export const profileController = async (req, res) => {};
