@@ -30,4 +30,10 @@ router.get(
   userController.profileController
 );
 
+router.post(
+  "/logout",
+  authMiddleware.authUser,
+  userController.logoutController
+);
+
 export default router;
